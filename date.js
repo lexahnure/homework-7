@@ -4,11 +4,13 @@ const getDate = () => {
 
   console.log(thisDate);
 }
+
 getDate();
 
 const path = require('path');
 const getFileName = () => {
-  const fileName = path.basename(__filename);
-  return console.log(fileName);
+  const fileName = path.basename(__filename);  
+  console.log(fileName);
 }
+
 getFileName();
