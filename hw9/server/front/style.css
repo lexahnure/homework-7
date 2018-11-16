@@ -1,0 +1,64 @@
+body {
+  font-family: sans-serif;
+  padding: 5vh 5vw;
+  margin: 0;
+}
+
+section {
+  background: hsla(210, 12%, 96%);
+  padding: 2rem;
+}
+
+h1 { 
+  font-size: 3rem;
+}
+
+.date {
+  position: absolute;
+  left: 5vw;
+  bottom: 5vh;
+  animation: 2s cubic-bezier(.17,.62,.32,.85) 0s anim;
+  transform-origin: left;
+}
+
+.date::before {
+  content: '';
+  position: absolute;
+  padding: 1rem;
+  background: hsl(210, 12%, 96%);
+  width: 100%;
+  z-index: -1;
+  left: -0.5rem;
+  top: -0.5rem;
+  transform-origin: left;
+  animation: 1s cubic-bezier(.68,.18,.66,.97) 0s animBefore;
+}
+
+img {
+  border: 2px solid hsl(210, 12%, 86%)
+}
+
+@keyframes anim {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1);    
+  }
+  78% {
+    transform: scale(1.2);
+    color: hsla(350, 80%, 24%);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes animBefore {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
