@@ -161,7 +161,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const header = __webpack_require__(/*! ./scripts/header */ \"./scripts/header.js\");\r\nconst footer = __webpack_require__(/*! ./scripts/footer */ \"./scripts/footer.js\");\r\nconst $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\r\nconst body = $('body');\r\n\r\nbody.append(header, footer);\n\n//# sourceURL=webpack:///./app.js?");
+eval("const header = __webpack_require__(/*! ./scripts/header */ \"./scripts/header.js\");\r\nconst footer = __webpack_require__(/*! ./scripts/footer */ \"./scripts/footer.js\");\r\nconst main = __webpack_require__(/*! ./scripts/main */ \"./scripts/main.js\");\r\nconst $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\r\nconst body = $('body');\r\n\r\nbody.append(header, main, footer);\n\n//# sourceURL=webpack:///./app.js?");
 
 /***/ }),
 
@@ -195,6 +195,17 @@ eval("const builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/el
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("const builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elementBuilder.js\");\r\nconst content = '<a href=\"/\">Logo</a>';\r\n\r\nmodule.exports = builder('header', content, 'header');\n\n//# sourceURL=webpack:///./scripts/header.js?");
+
+/***/ }),
+
+/***/ "./scripts/main.js":
+/*!*************************!*\
+  !*** ./scripts/main.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elementBuilder.js\");\r\nconst date = new Date();\r\nconst content = `<h1>That's wierd, it's works!</h1><p>${date.toLocaleDateString()}</p>`;\r\n\r\nmodule.exports = builder('main', content, 'main');\n\n//# sourceURL=webpack:///./scripts/main.js?");
 
 /***/ })
 

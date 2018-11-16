@@ -14,7 +14,6 @@ module.exports = {
     template: 'index.html',
     title: 'element builder',
     filename: 'index.html',
-    //favicon: 'images/favicon.ico',
     chunksSortMode: 'none'
   })],
 
@@ -22,7 +21,6 @@ module.exports = {
     splitChunks: {
       chunks: 'all'
     },
-  },
-    
+  },    
 
  };
