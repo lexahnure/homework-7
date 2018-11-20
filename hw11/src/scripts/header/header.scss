@@ -1,6 +1,14 @@
-
+@import '../../variables.scss';
 
 .header {
-    background: #fff;
+    background: $gray-100;
     padding: 2rem;
+    &::after {
+        content:'';
+        position: absolute;
+        left: -2rem;
+        top: 5.125rem;
+        width: calc(100% + 4rem);
+        border-top: 1px solid $gray-400;
+    }
 }

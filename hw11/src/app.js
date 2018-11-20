@@ -1,5 +1,5 @@
-import header from './scripts/header/header';
-import footer from './scripts/footer/footer';
+import {header} from './scripts/header';
+import {footer} from './scripts/footer';
 import {main} from './scripts/main';
 import $ from 'jquery';
 import './app.scss';

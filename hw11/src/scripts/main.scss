@@ -1,7 +1,7 @@
-$card-bg: white;
-$def-m: 1;
 @import '../mixins.scss';
 @import '../variables.scss';
+$card-bg: white;
+$def-m: 1;
 
 .main {
     display: grid;

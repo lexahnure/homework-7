@@ -3,4 +3,4 @@ import './footer.scss';
 
 const content = '<p>Easycode 2018 (c)</p>';
 
-export default builder('footer', content, 'footer');
+export const footer = builder('footer', content, 'footer');

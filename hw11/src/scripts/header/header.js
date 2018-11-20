@@ -3,4 +3,4 @@ import './header.scss';
 
 const content = '<a href="/">Logo</a>';
 
-export default builder('header', content, 'header');
+export const header = builder('header', content, 'header');
