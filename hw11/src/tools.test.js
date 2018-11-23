@@ -1,12 +1,20 @@
-const assert = require('assert');
+import chai from 'chai';
 import { sum } from './tools';
 
+const { assert, expect, should } = chai;
+should();
+
+const test = _ => _ || null;
+
+
 describe('sum', () => {
- it('should return 5 for sum(2, 3)', () => {
-   assert.equal(sum(2, 3), 5);
+ it('should equal 5 for sum(2, 3)', () => {
+   const input = sum(2, 3);
+   expect(input).to.equal(5);
  });
 
  it('should return 2 for sum(2, 0)', () => {
-   assert.equal(sum(2, 0), 2);
+   sum(2, 0).should.equal(2);
  });
+
 });
