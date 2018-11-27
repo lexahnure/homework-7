@@ -22,6 +22,12 @@ module.exports = function(config) {
 
     // list of files / patterns to exclude
     exclude: [
+      'src/users.js',
+      'src/users.test.js',
+      'src/Person.js',
+      'src/person.test.js',
+      'src/tools.js',
+      'src/tools.test.js'
     ],
 
 
