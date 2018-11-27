@@ -1,9 +1,16 @@
-import {header} from './scripts/header';
-import {footer} from './scripts/footer';
-import {main} from './scripts/main';
-import $ from 'jquery';
-import './app.scss';
+import React from 'react';
+import ReactDom from 'react-dom';
 
-const body = $('body');
+import Header from './components/header/index';
+import Footer from './components/footer/index';
+import Main from './components/main/index';
 
-body.append(header, main, footer);
+const Wrapper = (
+  <>
+    <Header/>
+    <Main/>
+    <Footer/>
+  </>
+)
+
+ReactDom.render( Wrapper, document.getElementById('app') );
