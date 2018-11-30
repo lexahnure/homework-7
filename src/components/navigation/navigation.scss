@@ -6,6 +6,9 @@
         li {
             display: inline-block;
             padding: $base ($base * 2);
+            a:hover {
+                color: $accent;
+            }
         }
     }
 }

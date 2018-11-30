@@ -1,4 +1,3 @@
-import React from 'react';
 import Aside from '../aside/index';
 import Content from '../content/index';
 import './main.scss';

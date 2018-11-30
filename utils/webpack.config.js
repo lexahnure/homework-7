@@ -14,6 +14,9 @@ const plugins = [
     chunksSortMode: 'none'
   }),
   new webpack.HotModuleReplacementPlugin(),
+  new webpack.ProvidePlugin({
+    React: 'react',
+  }),
 ];
 
 if (isFileCSS) {
@@ -33,6 +36,12 @@ module.exports = {
 
   module: {
     rules: [
+      // {
+      //   enforce: 'pre',
+      //   test: /\.js$/,
+      //   exclude: /node_modules/,
+      //   loader: 'eslint-loader',
+      //  },   
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
