@@ -1,0 +1,11 @@
+@import '../../variables.scss';
+
+.navigation {
+    ul{
+        text-align: center;
+        li {
+            display: inline-block;
+            padding: $base ($base * 2);
+        }
+    }
+}

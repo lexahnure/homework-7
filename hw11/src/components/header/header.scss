@@ -1,0 +1,16 @@
+@import '../../variables.scss';
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; 
+    padding: $base * 8;
+    background: $gray-100;
+    &::after {
+        content:'';
+        position: absolute;
+        left: -($base * 8);
+        top: 5.5rem;
+        width: calc(100% + 2rem);
+        border-top: 1px solid $gray-400;
+    }
+}

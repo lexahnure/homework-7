@@ -1,9 +1,13 @@
 import React from 'react';
+import Aside from '../aside/index';
+import Content from '../content/index';
+import './main.scss';
 
 const Main = () => (
-    <footer className="main">
-        <strong> Content </strong>
-    </footer>
+    <main className="main">
+        <Aside/>
+        <Content/>
+    </main>
 );
 
 export default Main;

@@ -1,0 +1,17 @@
+@import '../../variables.scss';
+
+.footer {
+    background: $gray-100;
+    padding: $base * 8;
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 4rem);
+    &::before {
+        content:'';
+        position: absolute;
+        left: -($base * 8);
+        top: 0;
+        width: calc(100% + 2rem);
+        border-top: ($base * 0.25) solid $gray-400;
+    }
+}

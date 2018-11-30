@@ -1,0 +1,10 @@
+@import '../../variables.scss';
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: 'aside content';
+    background: $gray-100;
+    width: 1440px;
+    margin: 0 auto;
+}

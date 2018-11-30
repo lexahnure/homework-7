@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npx karma start karma.conf.js",
     "start": "npx webpack --config utils/webpack.config.js --styles",
-    "server": "npx webpack-dev-server --config=utils/webpack.config.js --open"
+    "server": "npx webpack-dev-server --config=utils/webpack.config.js --open --watch"
   },
   "repository": {
     "type": "git",
