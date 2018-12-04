@@ -1,9 +1,9 @@
 import './footer.scss';
 
 const Footer = () => (
-    <footer className="footer">
-        <strong> &copy; 2018 </strong>
-    </footer>
+  <footer className="footer">
+    <strong> &copy; 2018 </strong>
+  </footer>
 );
 
 export default Footer;

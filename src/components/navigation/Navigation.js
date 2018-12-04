@@ -1,13 +1,15 @@
 import './navigation.scss';
 
-const Navigation = () => (
+const Navigation = (props) => {
+  const { list } = props;
+
+  return (
     <nav className="navigation">
-        <ul>
-            <li><a href="/">One</a></li>
-            <li><a href="/">Two</a></li>
-            <li><a href="/">Three</a></li>
-        </ul>
+      <ul>
+        {list.map(item => <li key={item}><a href={`/${item.toLowerCase()}`}>{item}</a></li>)}
+      </ul>
     </nav>
-);
+  );
+};
 
 export default Navigation;
