@@ -26,7 +26,7 @@ const Content = () => (
   <div className="content">
     <h2> Content </h2>
     <Greetings name="Alex" />
-    <Numbers from="1" to="8" />
+    <Numbers from={1} to={8} even />
     <UsersTable users={list} />
   </div>
 );
