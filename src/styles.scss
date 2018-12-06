@@ -1,6 +1,12 @@
 @import './variables.scss';
 
 body {
-    font-family: 'Ibm Plex Sans';
-    background: $gray-100;
+  font-family: 'Ibm Plex Sans';
+  background: $gray-100;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  position: relative;
 }

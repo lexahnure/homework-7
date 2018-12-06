@@ -1,8 +1,7 @@
 import './greetings.scss';
 
 const Greetings = (props) => {
-  const { time } = props;
-  const { name } = props;
+  const { time = new Date().getHours(), name } = props;
   let dayPart;
 
   if (time > 22 || time <= 3) {

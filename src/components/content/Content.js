@@ -25,11 +25,9 @@ const list = [
 const Content = () => (
   <div className="content">
     <h2> Content </h2>
-    <Greetings time={new Date().getHours()} name="Alex" />
+    <Greetings name="Alex" />
     <Numbers from="1" to="8" />
-    <table className="usersTable">
-      <UsersTable users={list} />
-    </table>
+    <UsersTable users={list} />
   </div>
 );
 
