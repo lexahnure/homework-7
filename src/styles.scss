@@ -7,6 +7,8 @@ body {
 
 #app {
   display: grid;
-  grid-template-rows: 1fr auto 1fr;
+  grid-template-rows: auto 1fr auto;
   position: relative;
+  height: 100%;
+  min-height: 100%;
 }
