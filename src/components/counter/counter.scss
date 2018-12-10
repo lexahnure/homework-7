@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+
+span {
+  padding: ($base * 2) ($base * 4);
+  display: inline-block;
+  border: ($base * .25) solid transparent;
+  background: $gray-200;
+  line-height: $base * 4;
+  margin: 0;
+  vertical-align: middle;
+}
+
+button {
+  padding: ($base * 2) ($base * 4);
+  display: inline-block;
+  margin: ($base * 4) ($base * 4) ($base * 4) 0;
+  border: ($base * .25) solid $gray-400;
+  background: $gray-300;
+  line-height: $base * 4;
+  vertical-align: middle;
+  font-size: $base * 4;
+}
