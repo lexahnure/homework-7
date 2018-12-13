@@ -1,0 +1,15 @@
+@import '../../variables.scss';
+
+.shown {
+  display: inline-block;
+  background-color: $accent;
+  width: $base * 20;
+  height: $base * 5;
+}
+
+.hidden {
+  display: none;
+  background-color: $accent;
+  width: $base * 20;
+  height: $base * 5;
+}
