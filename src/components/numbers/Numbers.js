@@ -3,7 +3,7 @@ import './numbers.scss';
 const Numbers = (props) => {
   const { from, to, even, odd } = props;
   const arr = [];
-  const output = item => <li>{item}</li>;
+  const output = item => <li key={item}>{item}</li>;
   let numSort;
 
   for (let num = from; num <= to; num++) {

@@ -1,9 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
+
 const args = process.argv;
 const isFileCSS = args.includes('--styles');
-const webpack = require('webpack');
 const date = Date.now();
 
 const plugins = [
@@ -32,7 +33,7 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
     chunkFilename: 'vendors.js'
   },
-  
+
   mode: 'development',
 
   module: {
@@ -42,7 +43,7 @@ module.exports = {
       //   test: /\.js$/,
       //   exclude: /node_modules/,
       //   loader: 'eslint-loader',
-      //  },   
+      //  },
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
@@ -60,11 +61,11 @@ module.exports = {
         test: /\.s?css$/,
         use: [
           isFileCSS ? MiniCssExtractPlugin.loader : 'style-loader',
-          "css-loader",
-          "sass-loader"
+          'css-loader',
+          'sass-loader'
         ]
       },
-       
+
     ]
   },
 
@@ -83,4 +84,4 @@ module.exports = {
     hot: true
   }
 
- };
+};

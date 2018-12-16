@@ -6,11 +6,13 @@ const UsersTable = (props) => {
 
   return (
     <table className="usersTable">
-      {
-        users
-        ? users.map(user => <UserComp firstName={user.firstName} lastName={user.lastName} age={user.age} />)
-        : <tr><td className="error">No data here</td></tr>
-      }
+      <tbody>
+        {
+          users
+          ? users.map(user => <UserComp key={user.id} firstName={user.firstName} lastName={user.lastName} age={user.age} />)
+          : <tr><td className="error">No data here</td></tr>
+        }
+      </tbody>
     </table>
   )
 };

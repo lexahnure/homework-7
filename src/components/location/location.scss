@@ -1,0 +1,13 @@
+@import '../../variables.scss';
+
+.location {
+  position: relative;
+  display: block;
+  background: transparent;
+  padding: 0;
+  p {
+    display: inline-block;    
+    background: wheat;
+    padding: $base * 3;
+  }
+}
