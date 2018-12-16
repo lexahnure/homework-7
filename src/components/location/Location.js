@@ -1,7 +1,30 @@
 import './location.scss';
 
-const Location = ({ latitude, longtitude }) => (
-  <span className="location"><p>Your location is {latitude} : {longtitude}</p></span>
-);
+class Location extends Component {
+  state = {
+    latitude: '',
+    longitude: ''
+  }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      this.setState({
+        latitude: pos.coords.latitude,
+        longitude: pos.coords.longitude
+      });
+    });
+  }
+
+  render() {
+    const {
+      latitude,
+      longitude
+    } = this.state;
+
+    return (
+      <span className="location"><p>Your location is {latitude} : {longitude}</p></span>
+    );
+  }
+}
 
 export default Location;

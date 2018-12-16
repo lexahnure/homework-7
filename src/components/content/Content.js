@@ -14,44 +14,13 @@ import './content.scss';
 class Content extends Component {
   state = {
     users: [],
-    classN: false,
-    btnText: 'show',
-    rectClass: 'hidden',
     userPosts: [],
-    latitude: '',
-    longtitude: ''
   };
 
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(resp => resp.json())
       .then(users => this.setState({ users }));
-
-    navigator.geolocation.getCurrentPosition((pos) => {
-      this.setState({
-        latitude: pos.coords.latitude,
-        longtitude: pos.coords.longitude
-      })
-    });
-  }
-
-  toggleClass = () => {
-    const { classN } = this.state;
-    this.setState(classN ? { classN: false } : { classN: true });
-  }
-
-  toggleView = () => {
-    const { rectClass } = this.state;
-
-    this.setState(
-      rectClass === 'hidden' ? {
-        rectClass: 'shown',
-        btnText: 'hide'
-      } : {
-        rectClass: 'hidden',
-        btnText: 'show'
-      }
-    );
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -68,12 +37,7 @@ class Content extends Component {
   render() {
     const {
       users,
-      classN,
-      btnText,
-      rectClass,
       userPosts,
-      latitude,
-      longtitude
     } = this.state;
 
     return (
@@ -83,9 +47,9 @@ class Content extends Component {
         <Numbers from={1} to={8} even />
         <UsersTable users={list} />
         <Counter />
-        <Button handleClick={this.toggleClass} btnClassName={classN} />
-        <Show handleClick={this.toggleView} text={btnText} btnClassName={rectClass} />
-        <Location latitude={latitude} longtitude={longtitude} />
+        <Button />
+        <Show />
+        <Location />
         <List items={users} clickHandler={this.showUserInfo} userData={userPosts} btnHandler={this.closeInfo} />
       </div>
     );
