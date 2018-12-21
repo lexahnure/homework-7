@@ -1,0 +1,8 @@
+@import '../../variables.scss';
+
+input[type=text] {
+  padding: $base * 2 $base * 4;
+  border: $base * .25 solid $gray-400;
+  font: 1rem 'IBM Plex Sans';
+  height: 1rem;
+}
