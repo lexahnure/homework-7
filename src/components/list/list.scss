@@ -1,5 +1,33 @@
 @import '../../variables.scss';
 
+.userInfo {
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 2fr;
+  button {
+    position: absolute;
+    top: $base * 5;
+    right: $base * 4;
+  }
+}
+
 .usersList {
-    padding-left: ($base * 4);
+  padding-left: ($base * 4);
+  margin-top: $base * 4;
+}
+
+.userPosts {
+  padding: $base * 3 $base * 5;
+  background: white;
+
+  h4 {
+    margin: ($base * 5) 0 ($base * 4) 0;
+  }
+
+  h4 {
+    margin: ($base * 4) 0 ($base * 3) 0;
+  }
+  p {
+    margin: ($base * 3) 0 ($base * 2) 0;
+  }
 }
