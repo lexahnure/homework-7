@@ -7,10 +7,12 @@ class Editable extends Component {
 
   }
 
-  handleClick = (event) => {
+  handleState = (event) => {
     const { callback } = this.props;
     this.setState(prev => ({ editable: !prev.editable }));
-    callback(event.target.value);
+    if (callback && event.type !== 'click') {
+      callback(event.target.value);
+    }
   }
 
   handleChange = (event) => {
@@ -24,14 +26,14 @@ class Editable extends Component {
     } = this.state;
     return (
       !editable
-        ? <span onClick={this.handleClick}>{val}</span>
+        ? <span onClick={this.handleState}>{val}</span>
         : (
           <input
             type="text"
-            autoFocus="true"
+            autoFocus
             value={val}
             onChange={this.handleChange}
-            onBlur={this.handleClick}
+            onBlur={this.handleState}
           />
         )
     );

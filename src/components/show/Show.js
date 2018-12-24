@@ -11,13 +11,12 @@ class Show extends Component {
 
   render() {
     const {
-      rectClass,
-      btnText
+      isShown
     } = this.state;
 
     return (
       <>
-        <button type="button" onClick={this.toggleView}>{isShown ? 'hide' : show}</button>
+        <button type="button" onClick={this.toggleView}>{isShown ? 'hide' : 'show'}</button>
         <span className={isShown ? 'shown' : 'hidden'} />
       </>
     );
