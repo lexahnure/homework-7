@@ -1,0 +1,9 @@
+@import '../../variables.scss';
+
+.helloBoard {
+  position: relative;
+  background: white;
+  padding: $base * 5;
+  margin: auto;
+  margin-bottom: $base * 5;
+}
