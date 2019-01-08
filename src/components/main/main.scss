@@ -1,11 +1,8 @@
 @import '../../variables.scss';
 
 .main {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-gap: $base * 5;
-    grid-template-areas: 'aside content';
     background: $gray-100;
-    max-width: 1440px;
+    max-width: 1200px;
+    min-width: 800px;
     margin: 0 auto;
 }

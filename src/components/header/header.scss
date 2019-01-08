@@ -6,4 +6,7 @@
     padding: $base * 8;
     background: $gray-100;
     border-bottom: 1px solid $gray-400;
+    .user-box {
+        align-self: right;
+    }
 }

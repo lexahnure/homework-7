@@ -1,0 +1,9 @@
+@import '../../variables.scss';
+
+.card {
+  position: relative;
+  background: white;
+  padding: $base * 5;
+  margin: auto;
+  margin-bottom: $base * 5;
+}

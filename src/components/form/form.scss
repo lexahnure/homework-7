@@ -1,0 +1,28 @@
+@import '../../variables.scss';
+
+form {
+    input {
+        margin-right: $base * 3;
+        padding: $base * 2;
+        
+        &[type=checkbox] {
+            display: inline-block;
+            margin-top: $base * 3;
+            padding: $base * 2;
+            width: $base * 4;
+            height: $base * 4;
+            label {
+                display: inline-block;
+            }
+        }
+    }
+    select {
+        padding: $base * 2;
+    }
+
+    p {
+        padding: $base;
+        background: $gray-200;
+        margin-right: $base * 3;
+    }
+}
