@@ -36,6 +36,8 @@ class Home extends React.PureComponent {
             )
           }
         </div>
+        <Products items={items} updProdName={updProdName} delProd={delProd} />
+        <Product />
       </>
     );
   }
