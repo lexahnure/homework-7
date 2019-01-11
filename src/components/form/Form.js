@@ -52,7 +52,7 @@ class Form extends Component {
     event.preventDefault();
     const data = {};
     Object.entries(this.state)
-      .forEach(([key, {value}]) => {
+      .forEach(([key, { value }]) => {
         key === 'name'
         ? key = 'firstName'
         : key === 'surname'
@@ -95,32 +95,35 @@ class Form extends Component {
     const { state } = this;
     const { disabled = {} } = this.props;
     return (
-      <form action="#" onSubmit={this.onSubmit}>
-        {
-          this.fields.map(field => 
-            <div>
-              <input 
-                type={field.secure ? "password" : "text"}
-                placeholder={field.placeholder}
-                name={field.label}
-                value={state[field.label].value}
-                onChange={this.handleChange}
-                onBlur={this.validate}
-                disabled={disabled[field.label]}
-              />
-              {
-                state[field.label].error &&
-                <mark>{state[field.label].error}</mark>
-              }
-            </div>
-          )
-        }
-        <input 
-          type="submit"
-          value="Send"
-          disabled={this.isButtonDisabled()}
-        />
-      </form>
+      <div>
+        <form action="#" onSubmit={this.onSubmit}>
+          {
+            this.fields.map(field => (
+              <>
+                <input
+                  type={field.secure ? 'password' : 'text'}
+                  placeholder={field.placeholder}
+                  name={field.label}
+                  value={state[field.label].value}
+                  onChange={this.handleChange}
+                  onBlur={this.validate}
+                  disabled={disabled[field.label]}
+                  key={field.label}
+                />
+                {
+                  state[field.label].error &&
+                  <mark>{state[field.label].error}</mark>
+                }
+              </>
+            ))
+          }
+          <input
+            type="submit"
+            value="Send"
+            disabled={this.isButtonDisabled()}
+          />
+        </form>
+      </div>
     );
   }
 }

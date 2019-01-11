@@ -1,28 +1,52 @@
 @import '../../variables.scss';
 
 form {
-    input {
-        margin-right: $base * 3;
-        padding: $base * 2;
-        
-        &[type=checkbox] {
-            display: inline-block;
-            margin-top: $base * 3;
-            padding: $base * 2;
-            width: $base * 4;
-            height: $base * 4;
-            label {
-                display: inline-block;
-            }
-        }
-    }
-    select {
-        padding: $base * 2;
-    }
+  input {
+    margin: auto auto 0.75rem auto;
+    display: block;
+    padding: $base * 2;
 
-    p {
-        padding: $base;
-        background: $gray-200;
-        margin-right: $base * 3;
+    &[type=submit] {
+      padding: $base * 2 $base * 4;
+      background: $gray-200;
+      border: $base * .5 solid transparent;
+      width: 280px;
+      font: 1rem/1rem 'IBM Plex Sans';
+      &:hover {
+        border-color: $gray-400;
+      }
+      &:active {
+        background: $gray-400;
+      }
+      &:focus {
+        outline: $base * .5 solid $gray-600;
+      }
+      &:disabled {
+        background: rgba($gray-300, .5);
+        &:hover {
+          border: $base * .5 solid transparent;
+        }
+      }
+    }    
+    
+    &[type=checkbox] {
+      display: block;
+      margin-top: $base * 3;
+      padding: $base * 2;
+      width: $base * 4;
+      height: $base * 4;
+      label {
+          display: inline-block;
+      }
     }
+  }
+  select {
+    padding: $base * 2;
+  }
+
+  p {
+    padding: $base;
+    background: $gray-200;
+    margin-right: $base * 3;
+  }
 }
