@@ -5,12 +5,15 @@
     grid-template-columns: 1fr 2fr 1fr; 
     padding: $base * 8;
     background: $gray-100;
-    border-bottom: 1px solid $gray-400;
+    border-bottom: 1px solid $gray-200;
+    z-index: 3;
+
     .user-box {
         align-self: right;
         margin: auto 0 auto auto;
-        a:nth-of-type(1) {
-            margin-right: $base * 4;
+        
+        span {
+            margin-right: $base * 3;
         }
     }
 }

@@ -23,8 +23,10 @@ class Main extends Component {
     const { loading } = this.props;
 
     return (
-      <main className="main">
-        { loading ? 'Loading...' : this.renderContent() }
+      <main className="wrapper">
+        <div className="main">
+          { loading ? 'Loading...' : this.renderContent() }
+        </div>
       </main>
     );
   }

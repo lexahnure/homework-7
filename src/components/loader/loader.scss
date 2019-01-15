@@ -1,0 +1,71 @@
+@import '../../variables.scss';
+
+.loader {
+  position: relative;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+
+  svg {
+    width: 240px;
+    height: 240px;
+    #shape {
+      animation: circleAnim 2s ease-out infinite;
+      fill: transparent;
+      stroke: $accent;
+      stroke-width: 4;
+      transform-origin: 60px 60px;
+    }
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    background: $accent;
+    display: inline-block;
+    margin: auto $base * 3 auto auto;
+    border-radius: $base * 3;
+
+    &:nth-of-type(1) {
+      animation: dotAnim 1s ease-out 2000ms infinite;
+    }
+
+    &:nth-of-type(2) {
+      animation: dotAnim 1s ease-out 0ms infinite;
+    }
+
+    &:nth-of-type(3) {
+      margin-right: auto;
+      animation: dotAnim 1s ease-out 1000ms infinite;
+    }
+  }
+}
+
+
+@keyframes dotAnim {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes circleAnim {
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dashoffset: 1000;
+  }
+
+  100% {
+    stroke-dashoffset: 2000;
+  }
+}

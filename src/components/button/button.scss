@@ -1,6 +1,38 @@
 @import '../../variables.scss';
 
 .active {
-    background-color: $accent;
-    color: white;
+  background-color: $accent;
+  color: white;
+}
+
+span {
+  padding: $base * 2 $base * 4;
+  display: inline-block;
+  border: $base * .25 solid transparent;
+  background: $gray-200;
+  line-height: $base * 4;
+  margin: 0;
+  vertical-align: middle;
+}
+  
+button {
+  position: relative;
+  display: block;
+  padding: $base * 1.25 $base * 3;
+  margin: auto 0 auto auto;
+  background: $gray-200;
+  line-height: $base * 4;
+  border: $base * .5 solid transparent;
+  font: 1rem/1rem 'IBM Plex Sans';
+
+  &.accent {
+    background: $accent;
+    color: white;      
+  }
+}
+
+.button-group {
+  button {
+    
+  }
 }

@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import Editable from '../../components/editable';
+import Editable from 'components/editable';
 import './products.scss';
 
 class Products extends Component {

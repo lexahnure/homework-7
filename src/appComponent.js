@@ -1,3 +1,4 @@
+import { Redirect, withRouter } from 'react-router-dom';
 import Header from './components/header/index';
 import Main from './components/main/index';
 import { checkUser, getInfo, getProducts, requestUpdateProductName, requestDeleteProduct } from './services';
@@ -9,13 +10,13 @@ class AppComp extends Component {
     user: null,
     info: null,
     loading: true,
-    items: []
+    items: [],
   }
 
   componentDidMount() {
     checkUser()
       .then(user => this.setState({ loading: false, user }))
-      .catch(() => this.setState({ loading: false }), console.log(this.state.user));
+      .catch(() => this.setState({ loading: false }));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -29,10 +30,14 @@ class AppComp extends Component {
 
   onLogin = (user) => {
     this.setState({ user });
+    console.log(user);
+  }
+
+  onLogout = () => {
+    this.setState({ user: null });
   }
 
   updateProductName = (data) => {
-    console.log(data);
     requestUpdateProductName(data.id, data)
       .then(() => getProducts()
         .then(items => this.setState({ items })));
@@ -49,14 +54,22 @@ class AppComp extends Component {
       user,
       info,
       loading,
-      items
+      items,
     } = this.state;
+
+    const ConnectedHeader = withRouter(({ history }) => (
+      <Header
+        user={user}
+        info={info}
+        onLogout={this.onLogout}
+        history={history}
+      />
+    ));
 
     return (
       <>
-        <Header user={user} info={info} />
+        <ConnectedHeader />
         <Main
-          onLogin={this.onLogin}
           loading={loading}
         >
           <Pages

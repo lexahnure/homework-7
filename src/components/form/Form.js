@@ -1,4 +1,3 @@
-import { register } from '../../services';
 import './form.scss';
 
 class Form extends Component {
@@ -13,7 +12,7 @@ class Form extends Component {
       const state = {};
 
       props
-        .forEach(([key, value]) => state[key] = {value, error: ''});
+        .forEach(([key, value]) => state[key] = { value, error: '' });
       return state;
     }
 
@@ -49,8 +48,10 @@ class Form extends Component {
   }
 
   onSubmit = (event) => {
-    event.preventDefault();
     const data = {};
+    const { registerUser } = this.props;
+
+    event.preventDefault();
     Object.entries(this.state)
       .forEach(([key, { value }]) => {
         key === 'name'
@@ -61,13 +62,9 @@ class Form extends Component {
         return data[key] = value;
       });
 
-    if (data) {
-      register(data);
+    if (registerUser) {
+      registerUser(data);
     }
-
-    /*if (this.props.onSave) {
-      this.props.onSave(data);
-    }*/
   }
 
   isButtonDisabled() {
@@ -121,6 +118,7 @@ class Form extends Component {
             type="submit"
             value="Send"
             disabled={this.isButtonDisabled()}
+            className="accent"
           />
         </form>
       </div>

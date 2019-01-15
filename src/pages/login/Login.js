@@ -22,7 +22,7 @@ const Login = ({ onLogin }) => {
       <form onSubmit={onSubmit}>
         <input type="text" placeholder="Enter email" required name="email" defaultValue="admin@a.com" />
         <input type="password" placeholder="Type password" required name="password" defaultValue="admin" />
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login" className="accent" />
       </form>
     </div>
   );
