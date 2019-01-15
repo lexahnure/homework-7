@@ -8,13 +8,14 @@ class Main extends Component {
   renderContent() {
     const { user, onLogin, info, items, updProdName, delProd } = this.props;
     return (
-      <React.Fragment>
-        {
+      <>
+        {/* {
           user
             ? <Home user={user} info={info} items={items} updProdName={updProdName} delProd={delProd} />
             : <Login onLogin={onLogin} /> //<Form />
-        }
-      </React.Fragment>
+        } */}
+        { this.props.children }
+      </>
     )
   }
 
@@ -25,8 +26,8 @@ class Main extends Component {
       <main className="main">
         { loading ? 'Loading...' : this.renderContent() }
       </main>
-    )
+    );
   }
-};
+}
 
 export default Main;

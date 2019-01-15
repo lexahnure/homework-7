@@ -1,6 +1,7 @@
 import Header from './components/header/index';
 import Main from './components/main/index';
-import { checkUser, getInfo, getProducts, updateProductName, deleteProduct } from './services';
+import { checkUser, getInfo, getProducts, requestUpdateProductName, requestDeleteProduct } from './services';
+import { Pages } from './pages/Pages';
 
 
 class AppComp extends Component {
@@ -10,10 +11,11 @@ class AppComp extends Component {
     loading: true,
     items: []
   }
+
   componentDidMount() {
     checkUser()
-    .then(user => this.setState({ loading: false, user }))
-    .catch(() => this.setState({ loading: false }));
+      .then(user => this.setState({ loading: false, user }))
+      .catch(() => this.setState({ loading: false }), console.log(this.state.user));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -24,39 +26,48 @@ class AppComp extends Component {
         .then(items => this.setState({ items }));
     }
   }
-  
+
   onLogin = (user) => {
     this.setState({ user });
   }
 
-  updProdName = (data) => {
+  updateProductName = (data) => {
     console.log(data);
-    updateProductName(data.id, data)
+    requestUpdateProductName(data.id, data)
       .then(() => getProducts()
         .then(items => this.setState({ items })));
   }
 
-  delProd = (id) => {
-    deleteProduct(id)
+  deleteProduct = (id) => {
+    requestDeleteProduct(id)
       .then(() => getProducts()
         .then(items => this.setState({ items })));
   }
 
   render() {
-    const { user, info, loading, items } = this.state;
+    const {
+      user,
+      info,
+      loading,
+      items
+    } = this.state;
 
     return (
       <>
         <Header user={user} info={info} />
         <Main
-          user={user}
-          info={info}
           onLogin={this.onLogin}
           loading={loading}
-          items={items}
-          updProdName={this.updProdName}
-          delProd={this.delProd}
-        />
+        >
+          <Pages
+            onLogin={this.onLogin}
+            user={user}
+            info={info}
+            items={items}
+            updateProductName={this.updateProductName}
+            deleteProduct={this.deleteProduct}
+          />
+        </Main>
       </>
     );
   }

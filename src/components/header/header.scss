@@ -8,5 +8,13 @@
     border-bottom: 1px solid $gray-400;
     .user-box {
         align-self: right;
+        margin: auto 0 auto auto;
+        a:nth-of-type(1) {
+            margin-right: $base * 4;
+        }
     }
+}
+
+.active {
+    color: $accent;
 }

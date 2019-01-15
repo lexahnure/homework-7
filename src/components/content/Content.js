@@ -3,7 +3,6 @@ import Form from '../form';
 import './content.scss';
 
 class Content extends Component {
-
   onSave = (data) => {
     console.log(data);
   }
@@ -14,17 +13,18 @@ class Content extends Component {
     return (
       <div className="content">
         <h2> Content </h2>
-        <Form data={{
-          email: 'maket@mail.com',
-          name: 'Igor',
-          surname: 'Oleg',
-        }}
-        onSave={this.onSave}
-        disabled={{ email: true }}
+        <Form
+          data={{
+            email: 'maket@mail.com',
+            name: 'Igor',
+            surname: 'Oleg',
+          }}
+          onSave={this.onSave}
+          disabled={{ email: true }}
         />
-      </div>  
-    )
+      </div>
+    );
   }
-};
+}
 
 export default Content;

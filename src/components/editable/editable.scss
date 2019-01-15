@@ -1,35 +1,37 @@
 @import '../../variables.scss';
 
-input[type=text] {
-  padding: $base * 2 $base * 3;
-  display: inline-block;
-  border: $base * .25 solid $gray-400;
-  font: 1rem 'IBM Plex Sans';
-  height: 1rem;
-  vertical-align: top;
-}
-
-textarea {
-  padding: $base * 2 $base * 3;
-  box-sizing: border-box;
-  width: 100%;
-  border: $base * .25 solid $gray-400;
-  font: 1rem 'IBM Plex Sans';
-}
-
-span {
-  padding: $base * 2 0 $base * 2 0;
-  display: inline-block;
-  border: ($base * .25) solid transparent;
-  background: transparent;
-  line-height: $base * 4;
-  margin: 0;
-
-  &:hover {
-    background: $gray-200;
+.editable {
+  input[type=text], input[type=password] {
+    padding: $base * 2 $base * 3;
+    display: inline-block;
+    border: $base * .25 solid $gray-400;
+    font: 1rem 'IBM Plex Sans';
+    height: 1rem;
+    vertical-align: top;
   }
-
-  &.notEntered {
-    color: $gray-500;
+  
+  textarea {
+    padding: $base * 2 $base * 3;
+    box-sizing: border-box;
+    width: 100%;
+    border: $base * .25 solid $gray-400;
+    font: 1rem 'IBM Plex Sans';
+  }
+  
+  span {
+    padding: $base * 2 0 $base * 2 0;
+    display: inline-block;
+    border: ($base * .25) solid transparent;
+    background: transparent;
+    line-height: $base * 4;
+    margin: 0;
+  
+    &:hover {
+      background: $gray-200;
+    }
+  
+    &.notEntered {
+      color: $gray-500;
+    }
   }
 }

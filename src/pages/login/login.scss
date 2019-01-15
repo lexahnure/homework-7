@@ -1,6 +1,28 @@
+@import '../../variables.scss';
+
 .login {
-    input {
-        display: block;
-        margin-bottom: 0.75rem;
+  margin-top: 4vh;
+
+  h2 {
+    max-width: fit-content;
+    width: auto;
+    margin: $base * 4 auto;
+  }
+
+  input {
+    &:-webkit-autofill {
+      border: 2px solid;
     }
+
+    &[type=text], &[type=password] {
+      display: block;
+      margin: auto auto 0.75rem auto;
+    }
+
+    &[type=submit] {
+      display: block;
+      margin: auto auto 0.75rem auto;
+      width: 284px;
+    }
+  }
 }

@@ -36,7 +36,7 @@ class Editable extends Component {
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <span
           onClick={this.handleState}
-          className={val || text ? '' : 'notEntered'}
+          className={val || text ? 'editable' : 'editable notEntered'}
         >
           {val || text || placeholder}
         </span>
@@ -52,6 +52,7 @@ class Editable extends Component {
           value={val || text}
           onChange={this.handleChange}
           onBlur={this.handleState}
+          className="editable"
         />
       );
     }
@@ -64,6 +65,7 @@ class Editable extends Component {
           value={val || text}
           onChange={this.handleChange}
           onBlur={this.handleState}
+          className="editable"
         />
       );
     }

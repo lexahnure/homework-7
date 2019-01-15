@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import Product from '../../components/product';
-import Products from '../../components/products';
+import Product from '../product';
+import Products from '../products';
 import './home.scss';
 
 class Home extends React.PureComponent {
@@ -18,14 +18,14 @@ class Home extends React.PureComponent {
       user = {},
       info,
       items,
-      updProdName,
-      delProd
+      updateProductName,
+      deleteProduct
     } = this.props;
 
     return (
       <>
         <div className="helloBoard">
-          <h2>Hello, {user.firstName}</h2>
+          {user && <h2>Hello, {user.firstName}</h2>}
           {
             info && (
             <>
