@@ -1,7 +1,7 @@
 import { Redirect, withRouter } from 'react-router-dom';
 import Header from './components/header/index';
 import Main from './components/main/index';
-import { checkUser, getInfo, getProducts, requestUpdateProductName, requestDeleteProduct } from './services';
+import { checkUser, getInfo, getProducts, requestUpdateProduct, requestDeleteProduct } from './services';
 import { Pages } from './pages/Pages';
 
 
@@ -37,8 +37,8 @@ class AppComp extends Component {
     this.setState({ user: null });
   }
 
-  updateProductName = (data) => {
-    requestUpdateProductName(data.id, data)
+  updateProduct = (data) => {
+    requestUpdateProduct(data)
       .then(() => getProducts()
         .then(items => this.setState({ items })));
   }
@@ -77,7 +77,7 @@ class AppComp extends Component {
             user={user}
             info={info}
             items={items}
-            updateProductName={this.updateProductName}
+            updateProduct={this.updateProduct}
             deleteProduct={this.deleteProduct}
           />
         </Main>

@@ -13,7 +13,7 @@ export const Pages = ({
   user,
   info,
   items,
-  updateProductName,
+  updateProduct,
   deleteProduct,
   registerUser,
   isRegistered,
@@ -48,26 +48,27 @@ export const Pages = ({
           <Route
             path="/(home)?"
             exact
-            render={() => <Loader />}
+            component={HomeUnauthorized}
             key="homeless"
           />,
-        ] :
-        [
+        ]
+        : [
           <Route
             path="/products"
-            render={() => (
+            render={({ history }) => (
               <Products
                 items={items}
                 info={info}
-                updateProductName={updateProductName}
+                updateProduct={updateProduct}
                 deleteProduct={deleteProduct}
+                history={history}
               />
             )}
             key="products"
           />,
           <Route
             path="/product"
-            render={() => <Product />}
+            render={() => <Product updateProduct={updateProduct} />}
             key="product"
           />,
           <Route

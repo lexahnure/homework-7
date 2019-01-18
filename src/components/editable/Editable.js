@@ -10,7 +10,7 @@ class Editable extends Component {
     const { callback, element } = this.props;
     this.setState(prev => ({ editable: !prev.editable }));
     if (callback && event.type !== 'click') {
-      element.title = event.target.value;
+      element.value = event.target.value;
       callback(element);
     }
   }

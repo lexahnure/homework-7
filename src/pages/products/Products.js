@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link, NavLink } from 'react-router-dom';
 import Editable from 'components/editable';
 import './products.scss';
@@ -27,6 +28,12 @@ class Products extends Component {
     this.setState({ products });
   }
 
+  goToProduct = (el) => {
+    const { history } = this.props;
+    event.preventDefault();
+    history.push(`/products/${el.id}`);
+  }
+
   render() {
     const {
       products
@@ -34,7 +41,7 @@ class Products extends Component {
 
     const {
       updateProductName,
-      deleteProduct
+      deleteProduct,
     } = this.props;
 
     return (
@@ -50,10 +57,12 @@ class Products extends Component {
           {
             products.map(el => (
               <div className="productCard" key={el.id}>
-                <span className="elemControl edit" />
+                <span className="elemControl edit" onClick={() => this.goToProduct(el)} />
                 <span className="elemControl delete" onClick={() => deleteProduct(el.id)} />
                 <div className="image">
-                  <img alt="" src={el.image ? el.image : './images/holder.png'} />
+                  <a href="" onClick={() => this.goToProduct(el)}>
+                    <img alt="" src={el.image ? el.image : './images/holder.png'} />
+                  </a>
                 </div>
                 <p><Editable text={el.title} callback={updateProductName} element={el} /></p>
               </div>
