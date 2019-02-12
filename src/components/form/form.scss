@@ -10,21 +10,52 @@ form {
       padding: $base * 2 $base * 4;
       background: $gray-200;
       border: $base * .5 solid transparent;
-      width: 280px;
+      width: 286px;
       font: 1rem/1rem 'IBM Plex Sans';
+      border-radius: 6px;
+
       &:hover {
         border-color: $gray-400;
       }
+
       &:active {
         background: $gray-400;
       }
+
       &:focus {
         outline: $base * .5 solid $gray-600;
       }
+
       &:disabled {
         background: rgba($gray-300, .5);
+
         &:hover {
           border: $base * .5 solid transparent;
+        }
+      }
+
+      &.accent {
+        background: $accent;
+        color: white;
+    
+        &:hover {
+          border-color: darken($accent, 10);
+        }
+    
+        &:active {
+          background: darken($accent, 10);
+        }
+        
+        &:focus {
+          outline: $base * .5 solid darken($accent, 20);;
+        }
+        &:disabled {
+          background: rgba($gray-300, .5);
+          color: rgba($gray-600, .5);
+  
+          &:hover {
+            border: $base * .5 solid transparent;
+          }
         }
       }
     }    
@@ -35,6 +66,7 @@ form {
       padding: $base * 2;
       width: $base * 4;
       height: $base * 4;
+
       label {
           display: inline-block;
       }

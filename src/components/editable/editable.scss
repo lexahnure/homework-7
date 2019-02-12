@@ -1,6 +1,6 @@
 @import '../../variables.scss';
 
-.editable {
+
   input[type=text], input[type=password] {
     padding: $base * 2 $base * 3;
     display: inline-block;
@@ -8,6 +8,7 @@
     font: 1rem 'IBM Plex Sans';
     height: 1rem;
     vertical-align: top;
+    border-radius: 6px;
   }
   
   textarea {
@@ -19,6 +20,7 @@
   }
   
   span {
+    &.editable {
     padding: $base * 2 0 $base * 2 0;
     display: inline-block;
     border: ($base * .25) solid transparent;

@@ -1,0 +1,37 @@
+@import '../../variables.scss';
+
+.register {
+  width: auto;
+  max-width: fit-content;
+  margin: $base * 4 auto;
+
+  .info-message {
+    padding: 16px;
+    background-color: hsl(150, 40%, 84%);
+  }
+
+  form {
+    width: 286px;
+
+    input {
+      &[type=text], &[type=password] {
+        display: block;
+        margin: auto auto 0.75rem auto;
+      }
+      &[type=button] {
+        width: 286px;
+      }
+    }
+  }
+
+
+  h2 {
+    max-width: fit-content;
+    width: auto;
+    margin: $base * 4 auto;
+  }
+
+  button {
+    width: 286px;
+  }
+}

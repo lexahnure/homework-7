@@ -1,7 +1,6 @@
 @import '../../variables.scss';
 
 .login {
-  margin-top: 4vh;
 
   h2 {
     max-width: fit-content;
@@ -23,6 +22,7 @@
       display: block;
       margin: auto auto 0.75rem auto;
       width: 284px;
+      border-radius: 6px;
     }
   }
 }

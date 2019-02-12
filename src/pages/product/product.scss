@@ -4,12 +4,17 @@
   h2, h4, p {
     line-height: $base * 8.5;
   }
+  img {
+    width: 180px;
+  }
+  input[type=file] {
+    display: none;
+  }
 }
 
 .card {
   position: relative;
   background: white;
-  padding: $base * 5;
   margin: auto;
   margin-bottom: $base * 5;
 }
@@ -19,6 +24,7 @@ input[type=button] {
   border: $base * .5 solid transparent;
   background: $gray-200;
   font: 1rem 'IBM Plex Sans';
+  border-radius: 6px;
   &:hover {
     border-color: $gray-400;
   }

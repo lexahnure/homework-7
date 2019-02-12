@@ -35,7 +35,7 @@ if (isFileCSS) {
 }
 
 module.exports = {
-  entry: './app.js',
+  entry: ['@babel/polyfill', './app.js'], //'./app.js',
   context: path.resolve(__dirname, '../src'),
   output: {
     filename: 'bundle-[name].js',
@@ -45,6 +45,14 @@ module.exports = {
   },
 
   mode: 'development',
+
+  resolve: {
+    alias: {
+      services: path.resolve(__dirname, '../src/services'),
+      components: path.resolve(__dirname, '../src/components'),
+      store: path.resolve(__dirname, '../src/store')
+    }
+  },
 
   module: {
     rules: [
@@ -63,6 +71,7 @@ module.exports = {
             presets: ['@babel/preset-env', '@babel/preset-react'],
             plugins: [
               '@babel/plugin-proposal-class-properties',
+              '@babel/plugin-transform-regenerator',
             ]
           }
         }

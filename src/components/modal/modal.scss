@@ -1,0 +1,21 @@
+@import '../../variables.scss';
+
+.ReactModalPortal {
+    z-index: 10;
+    opacity: .99;
+    position: absolute;
+    button:nth-of-type(2) {
+        margin-left: $base * 5;
+    }
+    .ReactModal__Content--after-open {
+        height: fit-content;
+        width: fit-content;
+        margin: auto;
+        .close {
+            position: absolute;
+            right: $base * 5;
+            top: $base * 5;
+            cursor: pointer;
+        }
+    }
+}

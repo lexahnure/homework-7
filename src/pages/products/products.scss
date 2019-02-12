@@ -2,11 +2,19 @@
 
 input[type=text], input[type=password] {
   width: 260px;
+  padding: $base * 2 $base * 3;
+  display: inline-block;
+  border: $base * .25 solid $gray-400;
+  font: 1rem 'IBM Plex Sans';
+  height: 1rem;
+  vertical-align: top;
+  border-radius: 6px;
 }
 
 .toolbar {
   display: grid;
   grid-template-columns: 2fr 1fr;
+
 }
 
 .productList {
@@ -15,35 +23,58 @@ input[type=text], input[type=password] {
   grid-gap: $base * 5;
   align-items: stretch;
   margin-top: $base * 5;
-
+  
   .productCard {
     display: grid;
     position: relative;
     width: auto;
     padding: $base * 4;
-    border: 1px solid $gray-300;
+    border: 1px solid $gray-200;
+    transition: all .3s ease-out;
+    border-radius: 6px;
 
+    img {
+      transition: all .3s ease-out;
+      transform: scale(1);
+    }
+
+    &:hover {
+      box-shadow: 0 2px 6px rgba($gray-300, .4),  0 10px 20px rgba($gray-300, .8);
+      img {
+        transform: scale(1.1);
+      }
+    }
+    
     p {
       input[type=text] {
         width: calc(100% - #{$base * 7});
       }
+      span {
+        padding: $base * 2 0 $base * 2 0;
+        display: inline-block;
+        border: ($base * .25) solid transparent;
+        background: transparent;
+        line-height: $base * 4;
+        margin: 0;
+      }
     }
-
+    
     &:nth-child(4n) {
       margin-right: 0;
     }
-
+    
     .image {
       display: inline-block;
       align-self: center;
       min-height: 200px;
     }
-
+    
     img {
       max-width: 100%;
       max-height: 200px;
     }
     & .elemControl {
+      z-index: 5;
       visibility: hidden;
       display: inline-block;
       top: $base * 4;
@@ -54,29 +85,33 @@ input[type=text], input[type=password] {
       background-repeat: no-repeat;
       background-position: center;
       position: absolute;
-      opacity: .75;
-
+      opacity: 0;
+      transform: translateX(10px);
+      
       &.delete {
         right: $base * 4;
-        background-image: url('../../images/cross.svg');
+        background-image: url('/images/cross.svg');
       }
-
+      
       &.edit {
         right: $base * 12;
-        background-image: url('../../images/edit.svg');
+        background-image: url('/images/edit.svg');
       }
-
+      
       &:hover {
         background-color: $gray-300;
         opacity: 1;
       }
     }
-
+    
     &:hover {
       & .elemControl {
         visibility: visible;
         display: inline-block;
         cursor: pointer;
+        transform: translateX(0px);
+        opacity: 1;
+        animation: elemCtrlsAnim .4s ease-out 1;
       }
     }
   }
@@ -85,16 +120,59 @@ input[type=text], input[type=password] {
 button {
   padding: $base * 1.25 $base * 3;
   border: $base * .5 solid transparent;
+  border-radius: 6px;
   background: $gray-200;
   margin: auto 0 auto auto;
   font: 1rem 'IBM Plex Sans';
+
   &:hover {
     border-color: $gray-400;
   }
+
   &:active {
     background: $gray-400;
   }
+
   &:focus {
     outline: $base * .5 solid $gray-600;
+  }
+
+  &.accent {
+    background: $accent;
+    color: white;
+
+    &:hover {
+      border-color: darken($accent, 10);
+    }
+
+    &:active {
+      background: darken($accent, 10);
+    }
+    
+    &:focus {
+      outline: $base * .5 solid darken($accent, 20);;
+    }
+  }
+}
+
+.button-group {
+  button {
+    margin: auto $base * 3 auto auto;
+  }
+}
+
+@keyframes elemCtrlsAnim {
+  0% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+
+  75% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
   }
 }

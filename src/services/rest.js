@@ -1,6 +1,11 @@
+import store from '../store';
+import { setError } from '../store/status';
+
 const BASE_URL = 'http://localhost:8086/';
 
 const request = (url, options = {}, data) => {
+  const isUserChecking = url.includes('checkUser');
+
   const settings = {
     credentials: 'include',
     ...options,
@@ -11,7 +16,21 @@ const request = (url, options = {}, data) => {
       'Content-type': 'application/json; charset=utf-8'
     };
   }
-  return fetch(`${BASE_URL}${url}`, settings)
+
+  if (options.body) {
+    settings.headers = {
+      'Content-type': 'multipart/form-data'
+    };
+  }
+
+  if (data) {
+    settings.body = JSON.stringify(data);
+    settings.headers = {
+      'Content-type': 'application/json; charset=utf-8'
+    };
+  }
+
+  const req = fetch(`${BASE_URL}${url}`, settings)
     .then(res => res.json())
     .then((data) => {
       if (data.error) {
@@ -19,6 +38,10 @@ const request = (url, options = {}, data) => {
       }
       return data;
     });
+
+  req.catch(error => !isUserChecking && store.dispatch(setError(String(error))));
+  // req.catch(err => store.dispatch(setError(err)));
+  return req;
 };
 
 const rest = {
@@ -27,6 +50,9 @@ const rest = {
   },
   post(url, data) {
     return request(url, { method: 'POST' }, data);
+  },
+  postImg(url, data) {
+    return request(url, { method: 'POST', body: data });
   },
   put(url, data) {
     return request(url, { method: 'PUT' }, data);

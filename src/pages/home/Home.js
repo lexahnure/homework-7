@@ -1,25 +1,18 @@
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Product from '../product';
-import Products from '../products';
 import './home.scss';
 
 class Home extends React.PureComponent {
   static propTypes = {
     user: PropTypes.object.isRequired,
+    // eslint-disable-next-line react/require-default-props
     info: PropTypes.object,
-  }
-
-  static defaultProps = {
-    info: {}
   }
 
   render() {
     const {
       user = {},
       info,
-      items,
-      updateProductName,
-      deleteProduct
     } = this.props;
 
     return (
@@ -41,4 +34,6 @@ class Home extends React.PureComponent {
   }
 }
 
-export default Home;
+const mapStateToProps = ({ info, user }) => ({ info, user });
+
+export default connect(mapStateToProps)(Home);

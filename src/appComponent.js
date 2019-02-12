@@ -1,39 +1,56 @@
+import { Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { ToastContainer } from 'react-toastr';
 import Header from './components/header/index';
 import Main from './components/main/index';
-import { checkUser, getInfo, getProducts, requestUpdateProductName, requestDeleteProduct } from './services';
+import { getProducts, requestUpdateProduct, requestDeleteProduct } from './services';
 import { Pages } from './pages/Pages';
+import { check, logout } from './store/user';
+import { getInfoAsync, cleanInfo } from './store/categories';
+import { cleanError } from './store/status';
 
 
 class AppComp extends Component {
   state = {
-    user: null,
-    info: null,
     loading: true,
-    items: []
+    items: [],
   }
 
   componentDidMount() {
-    checkUser()
-      .then(user => this.setState({ loading: false, user }))
-      .catch(() => this.setState({ loading: false }), console.log(this.state.user));
+    const { dispatch } = this.props;
+  /*checkUser()
+    .then(user => this.setState({ loading: false, user }))
+    .catch(() => this.setState({ loading: false }));*/
+    dispatch(check());
+    this.setState({ loading: false });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (!prevState.user && this.state.user) {
-      getInfo()
-        .then(info => this.setState({ info }));
-      getProducts()
-        .then(items => this.setState({ items }));
+  componentDidUpdate(prevProps) {
+    const { dispatch, history, error, user } = this.props;
+
+    if (!prevProps.user && user) {
+      dispatch(getInfoAsync());
+    }
+    if (prevProps.user && !user) {
+      history.push('/');
+    }
+    if (!prevProps.error && error) {
+      this.container.error(
+        error,
+        'Error!'
+      );
+      dispatch(cleanError());
     }
   }
 
-  onLogin = (user) => {
-    this.setState({ user });
+  onLogout = () => {
+    const { dispatch } = this.props;
+    dispatch(logout());
+    dispatch(cleanInfo());
   }
 
-  updateProductName = (data) => {
-    console.log(data);
-    requestUpdateProductName(data.id, data)
+  updateProduct = (data) => {
+    requestUpdateProduct(data)
       .then(() => getProducts()
         .then(items => this.setState({ items })));
   }
@@ -46,31 +63,40 @@ class AppComp extends Component {
 
   render() {
     const {
-      user,
-      info,
       loading,
-      items
+      items,
     } = this.state;
+
+    const { user, info } = this.props;
 
     return (
       <>
-        <Header user={user} info={info} />
+        <Header
+          user={user}
+          info={info}
+          onLogout={this.onLogout}
+        />
         <Main
-          onLogin={this.onLogin}
           loading={loading}
         >
           <Pages
-            onLogin={this.onLogin}
             user={user}
-            info={info}
             items={items}
-            updateProductName={this.updateProductName}
+            updateProduct={this.updateProduct}
             deleteProduct={this.deleteProduct}
           />
         </Main>
+        <ToastContainer
+          ref={ref => this.container = ref}
+          className="toast-top-right"
+        />
       </>
     );
   }
 }
 
-export default AppComp;
+const mapStateToProps = ({ user, error, info }) => ({ user, error, info });
+
+export default withRouter(connect(mapStateToProps)(AppComp));
+
+export { AppComp };
