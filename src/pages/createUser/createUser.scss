@@ -3,15 +3,31 @@
 .register {
   width: auto;
   max-width: fit-content;
-  margin: 4vh auto;
-  margin-top: 4vh;
+  margin: $base * 4 auto;
+
+  form {
+    width: 286px;
+
+    input {
+      &[type=text], &[type=password] {
+        display: block;
+        margin: auto auto 0.75rem auto;
+      }
+      &[type=button] {
+        width: 286px;
+      }
+    }
+  }
+
 
   h2 {
     max-width: fit-content;
     width: auto;
     margin: $base * 4 auto;
   }
+
   button {
-    width: 280px;
+    margin-top: $base * 5;
+    width: 286px;
   }
 }

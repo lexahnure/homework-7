@@ -1,4 +1,3 @@
-import { register } from '../../services';
 import './form.scss';
 
 class Form extends Component {
@@ -7,13 +6,13 @@ class Form extends Component {
 
     const props = Object.entries(data);
     const isStateEmpty =
-      props.every(([key]) => !currState[key].value );
+      props.every(([key]) => !currState[key].value);
 
     if (isStateEmpty) {
       const state = {};
 
       props
-        .forEach(([key, value]) => state[key] = {value, error: ''});
+        .forEach(([key, value]) => state[key] = { value, error: '' });
       return state;
     }
 
@@ -49,8 +48,10 @@ class Form extends Component {
   }
 
   onSubmit = (event) => {
-    event.preventDefault();
     const data = {};
+    const { registerUser } = this.props;
+
+    event.preventDefault();
     Object.entries(this.state)
       .forEach(([key, { value }]) => {
         key === 'name'
@@ -61,13 +62,9 @@ class Form extends Component {
         return data[key] = value;
       });
 
-    if (data) {
-      register(data);
+    if (registerUser) {
+      registerUser(data);
     }
-
-    /*if (this.props.onSave) {
-      this.props.onSave(data);
-    }*/
   }
 
   isButtonDisabled() {
@@ -98,8 +95,8 @@ class Form extends Component {
       <div>
         <form action="#" onSubmit={this.onSubmit}>
           {
-            this.fields.map(field => (
-              <>
+            this.fields.map((field, index) => (
+              <div key={field.label}>
                 <input
                   type={field.secure ? 'password' : 'text'}
                   placeholder={field.placeholder}
@@ -108,19 +105,20 @@ class Form extends Component {
                   onChange={this.handleChange}
                   onBlur={this.validate}
                   disabled={disabled[field.label]}
-                  key={field.label}
                 />
                 {
-                  state[field.label].error &&
-                  <mark>{state[field.label].error}</mark>
+                  state[field.label].error && (
+                    <mark>{state[field.label].error}</mark>
+                  )
                 }
-              </>
+              </div>
             ))
           }
           <input
             type="submit"
             value="Send"
             disabled={this.isButtonDisabled()}
+            className="accent"
           />
         </form>
       </div>

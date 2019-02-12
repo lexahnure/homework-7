@@ -1,0 +1,11 @@
+@import '../../variables.scss';
+
+.contacts-info {
+  td {
+    padding: $base * 1.5 0;
+    border-bottom: 1px dashed $gray-300;
+    &:last-of-type {
+      padding-left: $base * 3;
+    }
+  }
+}

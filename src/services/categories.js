@@ -1,13 +1,8 @@
 import { rest } from './rest';
 
-const getInfo = () => rest.get('shop_info');
-const getProducts = () => rest.get('public/products');
-const requestUpdateProductName = (id, data) => rest.put(`products/${id}`, data);
-const requestDeleteProduct = id => rest.delete(`products/${id}`);
-
-export {
-  getInfo,
-  getProducts,
-  requestUpdateProductName,
-  requestDeleteProduct
-};
+export const getInfo = () => rest.get('shop_info');
+export const getCategories = () => rest.get('public/categories');
+export const getCategory = id => rest.get(`public/categories/${id}`);
+export const updateCategory = category => rest.put(`categories/${category.id}`, category);
+export const createCategory = category => rest.post('categories', category);
+export const deleteCategory = id => rest.delete(`categories/${id}`);

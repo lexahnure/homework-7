@@ -1,0 +1,112 @@
+@import '../../variables.scss';
+
+.control-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: $base * 10;
+
+  .published {
+    padding: $base * 5;
+    border: 1px solid $gray-300;
+    border-radius: 6px;
+
+    .left-items {
+      list-style-type: none;
+
+      li {
+        padding: 0 $base * 1.75;
+        margin: $base 0;
+        user-select: none;
+        width: fit-content;
+        border-bottom: 1px solid $gray-200;
+        border-radius: 6px;
+        border-radius: 0px;
+        transition: border-radius .2s ease-out;
+
+        input {
+          display: inline-block;
+        }
+
+        &:hover {
+          border-radius: 6px;
+          background: $gray-200;
+
+          .controls {
+            opacity: 1;
+            display: inline-block;
+            transform: translateX(0px);
+            animation: controlsAnim 0.2s ease-out 1;
+          }        
+        }
+
+        .controls {
+          display: none;
+          opacity: 0;
+          transition: position, opacity .2s ease-out;
+          transform: translateX(-20px);
+          position: relative;
+          padding-left: $base;
+          vertical-align: middle;
+
+          .delete {
+            display: inline-block;
+            cursor: pointer;
+            img {
+              padding: 0 $base;
+            }          
+          }
+
+          .edit {
+            display: inline-block;
+            cursor: pointer;
+            img {
+              padding: 0 $base;
+            }
+          }
+        }
+      }
+          
+    }
+  }
+
+  .unpublished {
+    padding: $base * 5;
+    border: 1px solid $gray-300;
+    border-radius: 6px;
+
+    .right-items {
+      cursor: copy;
+      list-style-type: none;
+
+      li {
+        padding: $base * 1.75;
+        margin: $base 0;
+        user-select: none;
+        width: fit-content;
+        border-bottom: 1px solid $gray-200;
+        border-radius: 0px;
+        transition: border-radius .2s ease-out;
+
+        &:hover {
+          border-radius: 6px;
+          background: $gray-200;
+        }
+
+        .delete {
+          padding-left: $base * 2;
+          cursor: pointer;
+        }
+      }
+  
+    }
+  }
+}
+
+@keyframes controlsAnim {
+  from {
+    transform: translateX(-20px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

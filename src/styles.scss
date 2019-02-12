@@ -12,3 +12,20 @@ body {
   height: 100%;
   min-height: 100%;
 }
+
+h1, h2, h3, h4 {
+  margin-block-start: $base * 4;
+  margin-block-end: $base * 4;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}

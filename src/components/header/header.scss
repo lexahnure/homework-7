@@ -1,20 +1,35 @@
 @import '../../variables.scss';
 
 .header {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr; 
-    padding: $base * 8;
-    background: $gray-100;
-    border-bottom: 1px solid $gray-400;
-    .user-box {
-        align-self: right;
-        margin: auto 0 auto auto;
-        a:nth-of-type(1) {
-            margin-right: $base * 4;
-        }
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; 
+  padding: $base * 8;
+  background: $gray-100;
+  border-bottom: 1px solid $gray-200;
+  z-index: 3;
+
+  .user-box {
+    align-self: right;
+    margin: auto 0 auto auto;
+
+    a {
+      position: relative;
+      text-decoration: none;
+      color: $gray-900;
     }
+
+    img {
+      position: relative;
+      top: $base / 2;
+      right: $base;
+    }
+
+    span {
+      margin-right: $base * 3;
+    }
+  }
 }
 
 .active {
-    color: $accent;
+  color: $accent;
 }

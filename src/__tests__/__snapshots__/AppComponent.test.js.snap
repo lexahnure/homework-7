@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AppComponent> should match to snapshot 1`] = `
+<Fragment>
+  <Header
+    onLogout={[Function]}
+  />
+  <Main
+    loading={false}
+  >
+    <Pages
+      deleteProduct={[Function]}
+      items={Array []}
+      updateProduct={[Function]}
+    />
+  </Main>
+  <ToastContainer
+    className="toast-top-right"
+    id="toast-container"
+    newestOnTop={true}
+    onClick={[Function]}
+    preventDuplicates={true}
+    toastMessageFactory={[Function]}
+    toastType={
+      Object {
+        "error": "error",
+        "info": "info",
+        "success": "success",
+        "warning": "warning",
+      }
+    }
+  />
+</Fragment>
+`;
