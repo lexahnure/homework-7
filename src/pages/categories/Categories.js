@@ -46,18 +46,16 @@ class Categories extends Component {
         <section>
           <h2>Categories</h2>
           {
-            categories && (
-              <ControlItems
-                leftItems={categories.filter(isPublished)}
-                rightItems={categories.filter(notPublished)}
-                onChangeLeftItem={this.updateCategories}
-                removeItem={this.unpublishCategory}
-                addItem={this.publishCategory}
-                history={history}
-                rightColumnName="Unpublished"
-                leftColumnName="Publsihed"
-              />
-            )
+            <ControlItems
+              leftItems={categories.filter(isPublished)}
+              rightItems={categories.filter(notPublished)}
+              onChangeLeftItem={this.updateCategories}
+              removeItem={this.unpublishCategory}
+              addItem={this.publishCategory}
+              history={history}
+              rightColumnName="Unpublished"
+              leftColumnName="Publsihed"
+            />
           }
         </section>
       </>

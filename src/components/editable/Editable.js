@@ -29,7 +29,7 @@ class Editable extends Component {
     this.setState({ val: event.target.value });
   }
 
-  renderContent() {
+  render() {
     const {
       editable,
       val,
@@ -43,13 +43,8 @@ class Editable extends Component {
       clickEvent
     } = this.props;
 
-    const isActive = () => {
-      if ('active' in this.props) {
-        return true;
-      }
-      return false;
-    };
-    
+    const isActive = () => 'active' in this.props;
+
     if (active || editable) {
       return (
         <input
@@ -100,10 +95,6 @@ class Editable extends Component {
         />
       );
     }
-  }
-
-  render() {
-    return this.renderContent();
   }
 }
 

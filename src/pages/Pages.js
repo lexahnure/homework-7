@@ -13,17 +13,16 @@ import Category from './category';
 
 export const Pages = ({
   user,
-  updateProduct,
 }) => (
 
   <Switch>
     <Route
       path="/products/:id"
-      render={({ match, history }) => <Product match={match} history={history} />}
+      component={Product}
     />
     <Route
       path="/categories/:id"
-      render={({ match, history }) => <Category match={match} history={history} />}
+      component={Category}
       key="category"
     />
     {
@@ -37,7 +36,7 @@ export const Pages = ({
         <Route
           path="/user"
           exact
-          render={props => (<CreateUser history={props.history} />)}
+          component={CreateUser}
           key="user"
         />,
         <Route
@@ -99,6 +98,3 @@ export const Pages = ({
     />
   </Switch>
 );
-
-//<Products items={items} updProdName={updProdName} delProd={delProd} />
-//<Product />

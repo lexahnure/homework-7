@@ -13,7 +13,7 @@ export const info = (state = initial, action) => {
   return state;
 };
 
-export const categories = (state = initial, action) => {
+export const categories = (state = initialCategories, action) => {
   switch (action.type) {
     case SET_CATEGORIES: {
       return action.data;

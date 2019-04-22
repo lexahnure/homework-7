@@ -4,7 +4,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import AppComp from './appComponent';
-import store, { history } from './store';
+import store from './store';
 import { runSaga } from './store/index';
 
 import './reset.scss';

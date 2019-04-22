@@ -13,14 +13,10 @@ import { cleanError } from './store/status';
 class AppComp extends Component {
   state = {
     loading: true,
-    items: [],
   }
 
   componentDidMount() {
     const { dispatch } = this.props;
-  /*checkUser()
-    .then(user => this.setState({ loading: false, user }))
-    .catch(() => this.setState({ loading: false }));*/
     dispatch(check());
     this.setState({ loading: false });
   }
@@ -49,22 +45,9 @@ class AppComp extends Component {
     dispatch(cleanInfo());
   }
 
-  updateProduct = (data) => {
-    requestUpdateProduct(data)
-      .then(() => getProducts()
-        .then(items => this.setState({ items })));
-  }
-
-  deleteProduct = (id) => {
-    requestDeleteProduct(id)
-      .then(() => getProducts()
-        .then(items => this.setState({ items })));
-  }
-
   render() {
     const {
       loading,
-      items,
     } = this.state;
 
     const { user, info } = this.props;
@@ -81,9 +64,6 @@ class AppComp extends Component {
         >
           <Pages
             user={user}
-            items={items}
-            updateProduct={this.updateProduct}
-            deleteProduct={this.deleteProduct}
           />
         </Main>
         <ToastContainer

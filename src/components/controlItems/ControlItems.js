@@ -2,20 +2,11 @@ import './controlItems.scss';
 import Editable from 'components/editable';
 import Modal from '../modal';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class ControlItems extends Component {
   state = {
     itemId: '',
     editId: '',
-    rightItemsOriginal: [],
-    rightItemsFiltered: [],
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.rightItems !== prevState.rightItemsOriginal) {
-      return { rightItemsOriginal: nextProps.rightItems, rightItemsFiltered: nextProps.rightItems };
-    }
-    return null;
+    rightItemsFiltered: null,
   }
 
   onDelete = (itemId) => {
@@ -39,17 +30,16 @@ class ControlItems extends Component {
   onOk = () => {
     const { removeItem } = this.props;
     const { itemId } = this.state;
-    console.log('Removing item - ', itemId);
     removeItem(itemId);
   }
 
   changeHandler = (event) => {
-    const { rightItemsOriginal } = this.state;
-    const rightItemsFiltered = rightItemsOriginal.filter((el) => {
+    const { rightItems } = this.props;
+    const rightItemsFiltered = rightItems.filter((el) => {
       if (event.target.value.length > 1) {
         return el.title.toLowerCase().includes(event.target.value.toLowerCase());
       }
-      return { rightItemsFiltered: rightItemsOriginal };
+      return { rightItemsFiltered: rightItems };
     });
 
     this.setState({ rightItemsFiltered });
@@ -64,17 +54,14 @@ class ControlItems extends Component {
 
     const {
       leftItems,
-      rightItems,
       addItem,
       history,
+      rightItems,
       leftColumnName,
       rightColumnName
     } = this.props;
 
-    let item;
-    if (itemId && leftItems) {
-      [item] = leftItems.filter(el => el.id === itemId);
-    }
+    const item = leftItems && leftItems.filter(el => el.id === itemId);
 
     return (
       <>
@@ -83,32 +70,38 @@ class ControlItems extends Component {
             <h4>{leftColumnName}</h4>
             <ul className="left-items">
               {
-                leftItems.map(({ title, id }) => {
-                  return (
-                    <li key={id}>
-                      <Editable
-                        text={title}
-                        callback={title => this.onInputOut(title, id)}
-                        active={id === editId}
-                        clickEvent={() => history.push(`/categories/${id}`)}
-                      />
-                      <div className="controls">
-                        {
-                          id !== editId && (
-                            <>
-                              <span onClick={() => this.onDelete(id)} className="delete">
-                                <img src="/images/cross.svg" alt="" width="16" height="16" />
-                              </span>
-                              <span onClick={() => this.onEdit(id)} className="edit">
-                                <img src="/images/edit.svg" alt="" width="16" height="16" />
-                              </span>
-                            </>
-                          )
-                        }
-                      </div>
-                    </li>
-                  );
-                })
+                leftItems ? (
+                  leftItems.map(({ title, id }) => {
+                    return (
+                      <li key={id}>
+                        <Editable
+                          text={title}
+                          callback={title => this.onInputOut(title, id)}
+                          active={id === editId}
+                          clickEvent={() => history.push(`/categories/${id}`)}
+                        />
+                        <div className="controls">
+                          {
+                            id !== editId && (
+                              <>
+                                <span onClick={() => this.onDelete(id)} className="delete">
+                                  <img src="/images/cross.svg" alt="" width="16" height="16" />
+                                </span>
+                                <span onClick={() => this.onEdit(id)} className="edit">
+                                  <img src="/images/edit.svg" alt="" width="16" height="16" />
+                                </span>
+                              </>
+                            )
+                          }
+                        </div>
+                      </li>
+                    );
+                  })
+                ) : (
+                  <div>
+                    <p>There are no products yet.</p>
+                  </div>
+                )
               }
             </ul>
           </div>
@@ -117,9 +110,15 @@ class ControlItems extends Component {
             <input type="text" placeholder="type to search item" onChange={this.changeHandler} />
             <ul className="right-items">
               {
-                rightItemsFiltered.map(({ title, id }) => {
-                  return <li key={id} onDoubleClick={() => addItem(id)}>{title}</li>;
-                })
+                rightItemsFiltered ? (
+                  rightItemsFiltered.map(({ title, id }) => (
+                    <li key={id} onDoubleClick={() => addItem(id)}>{title}</li>
+                  ))
+                ) : (
+                  rightItems.map(({ title, id }) => (
+                    <li key={id} onDoubleClick={() => addItem(id)}>{title}</li>
+                  ))
+                )
               }
             </ul>
           </div>
