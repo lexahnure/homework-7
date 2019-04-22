@@ -3,6 +3,8 @@
 ### Server
 Install server to run project.
 https://github.com/iliatcymbal/base-koa
+Type `npm i` in console.
+Aftertype all packages are installed `npm start` to run the server.
 
 ### Project
 Latest project build in **withSagas** branch.
